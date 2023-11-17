@@ -1,5 +1,5 @@
 const { response } = require("express");
-const hospital = require("../models/hospital");
+const Hospital = require("../models/hospital");
 
 const getHospitales = (req, res = response  ) => {
     res.json({
@@ -10,8 +10,8 @@ const getHospitales = (req, res = response  ) => {
 
 const crearHospital = async(req, res = response  ) => {
 
-    const hospital = new hospital( {
-        usuario: uid,
+    const hospital = new Hospital( {
+        usuario: res.uid,
         ...req.body
     } );
     const uid = req.uid;
