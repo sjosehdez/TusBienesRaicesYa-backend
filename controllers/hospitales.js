@@ -10,20 +10,22 @@ const getHospitales = (req, res = response  ) => {
 
 const crearHospital = async(req, res = response  ) => {
 
+    const uid = req.uid;
+
     const hospital = new Hospital( {
-        usuario: res.uid,
+        usuario: uid,
         ...req.body
     } );
-    const uid = req.uid;
-    console.log('uid'+uid);
+
+    //console.log('uid'+uid);
 
     try {
 
-        await hospital.save();
+        const hospitalDB = await hospital.save();
 
         res.json({
             ok: true,
-            msg: 'crearHospital'
+            hospital: hospitalDB
         });        
 
     } catch (error) {
@@ -46,7 +48,7 @@ const actualizarHospital = (req, res = response  ) => {
 const borrarHospital = (req, res = response  ) => {
     res.json({
         ok: true,
-        msg: 'borarHospital'
+        msg: 'borrarHospital'
     });
 }
 

@@ -1,4 +1,5 @@
 const { response } = require("express");
+const Hospital = require("../models/medico");
 
 const getMedicos = (req, res = response  ) => {
     res.json({
