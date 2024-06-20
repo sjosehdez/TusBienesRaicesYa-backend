@@ -10,6 +10,10 @@ const app = express();
 //Configurar CORS --> MiddleWare se va ajecutar para todas lineas que siguen abajo
 app.use(cors());
 
+//Carpeta publica
+app.use(express.static('publica'))
+
+
 //Lectura y parseo del body
 app.use(express.json() );
 
