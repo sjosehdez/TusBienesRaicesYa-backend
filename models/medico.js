@@ -9,14 +9,16 @@ const MedicoSchema = Schema({
         type: String,        
     },
     usuario:{
-        required: true,
         type: Schema.Types.ObjectId,
-        ref: 'Usuario'
+        ref: 'Usuario',
+        required: true
     },
     //hospital:[{ }]   --> por si se tuviese varios hospitales
     hospital:{
         type: Schema.Types.ObjectId,
-        ref: 'Hospital'
+        ref: 'Hospital',
+        required: true
+
     }
 } ); //, { collection: 'medicos' }
 
