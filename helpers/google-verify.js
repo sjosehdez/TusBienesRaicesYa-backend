@@ -2,7 +2,7 @@ const {OAuth2Client} = require('google-auth-library');
 
 const client = new OAuth2Client( process.env.GOOGLE_SECRET);
 
-async function googleVerify( token) {
+const googleVerify = async( token) => {
 
   const ticket = await client.verifyIdToken({
       idToken: token,
@@ -11,13 +11,10 @@ async function googleVerify( token) {
   });
 
   const payload = ticket.getPayload();
-  console.log({ payload });
-  //const userid = payload['sub'];
-  // If the request specified a Google Workspace domain: const domain = payload['hd'];
-  return payload;
+  const { name, email, picture } = payload;
+  return { name, email, picture }
 }
 
-//verify().catch(console.error);
 
 module.exports = {
     googleVerify

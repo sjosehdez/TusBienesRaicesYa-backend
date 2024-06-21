@@ -1,10 +1,11 @@
 /* 
-Ruta: /api/auth 
+Ruta: /api/login/renew 
 */
 const { Router } = require('express');
-const { login, googleSignIn }  = require('../controllers/auth');
+const { login, googleSignIn, renewToken }  = require('../controllers/auth');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 const router = Router();
 
@@ -17,14 +18,17 @@ router.post( '/',
     login
 );
 
-router.
- post( '/google', 
+router.post( '/google', 
     [
         check('token', 'El token de google es obligatorio').not().isEmpty(),
         validarCampos
     ],
     googleSignIn
-    //  1012074936255-5o1jor04jkim3u4f55rtg9158voqh03j.apps.googleusercontent.com
+);
+
+router.get( '/renew',
+    validarJWT,
+    renewToken 
 );
 
 
