@@ -9,14 +9,19 @@ const mongoose = require('mongoose');
 //sync regresa una promesa
  const dbConnection = async () => {
      try {
+
          await mongoose.connect(
              process.env.DB_CNN, {
                  useNewUrlParser: true,
                  useUnifiedTopology: true,
                  useCreateIndex: true
-             }
-         );        
-         console.log('BD Online');
+             
+         }).then(() => {
+            console.log('BD Online');
+          }).catch((err) => {
+            console.error('Error de conexión', err);
+          });
+
 
      } catch (error) {
          console.log(error);

@@ -83,7 +83,6 @@ const actualizarMedico = async(req, res = response ) => {
 
 const borrarMedico = async(req, res = response  ) => {
 
-
     const id = req.params.id;
 
     try {

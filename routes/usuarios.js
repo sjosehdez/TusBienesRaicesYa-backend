@@ -13,7 +13,7 @@ router.get('/', validarJWT,  getUsuarios );
 //necesita datos obligatorios (nombre, email(es único), password, role)
 router.post( '/', 
     [
-        validarJWT,
+        //validarJWT,
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('password', 'El password es obligatorio').not().isEmpty(),
         check('email', 'El email es obligatorio').isEmail(),
